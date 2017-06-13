@@ -6,7 +6,7 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 05:44:16 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/03 06:19:08 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/13 19:57:00 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # define MFIELD_AND_PRECISION (*s >= '0' && *s <= '9') || *s == '.'
 
 int		ft_printf(const char *restrict format, ...);
+void	ft_conv_s(char **result, va_list ap);
 
 #endif

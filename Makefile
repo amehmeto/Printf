@@ -6,7 +6,7 @@
 #    By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 02:44:46 by amehmeto          #+#    #+#              #
-#    Updated: 2017/06/03 07:41:44 by amehmeto         ###   ########.fr        #
+#    Updated: 2017/06/13 19:58:59 by amehmeto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@
 
 NAME = libftprintf.a
 SRC_DIR = src/
-FILE = $(SRC_DIR)ft_printf.c
+FILE = $(SRC_DIR)ft_printf.c \
+		$(SRC_DIR)ft_conv_s.c \
+
 OBJ = $(FILE:.c=.o)
 CC = gcc
 FLAGS = -Weverything -g

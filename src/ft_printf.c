@@ -6,19 +6,22 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 06:09:18 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/13 18:41:39 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/13 20:00:18 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ft_printf.h"
 
-static void			s_conv(char **result, va_list ap)
+static void			result_builder(char *fmt, size_t start, size_t i,
+																char **result)
 {
-	char	*tmp;
+	char	*tmp, *tmp2;
 
 	tmp = *result;
-	*result = ft_strjoin(tmp, va_arg(ap, char *));
+	tmp2 = ft_strsub(fmt, start, i - start);
+	*result = ft_strjoin(tmp, tmp2);
 	free(tmp);
+	free(tmp2);
 }
 
 static ssize_t		flag_parser(const char *s, char **c)
@@ -38,7 +41,7 @@ static ssize_t		flag_parser(const char *s, char **c)
 
 int					ft_printf(const char *fmt, ...)
 {
-	char		*result, *tmp, *tmp2, *conv;
+	char		*result, *conv;
 	size_t		i, start;
 	va_list		ap;
 	ssize_t		a;
@@ -55,18 +58,12 @@ int					ft_printf(const char *fmt, ...)
 		while (fmt[i] && fmt[i] != '%')
 			i++;
 		if (result)
-		{
-			tmp = result;
-			tmp2 = ft_strsub(fmt, start, i - start);
-			result = ft_strjoin(tmp, tmp2);
-			free(tmp);
-			free(tmp2);
-		}
+			result_builder(fmt, start, i, &result);
 		else
 			result = ft_strsub(fmt, start, i);
 		i++;
 		if ((a = flag_parser(&fmt[i], &conv)) != -1 && *conv == 's')
-			s_conv(&result, ap);
+			ft_conv_s(&result, ap);
 		i += a + 1;
 		start = i;
 	}
