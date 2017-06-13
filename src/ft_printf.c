@@ -6,11 +6,20 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 06:09:18 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/03 07:05:47 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/13 18:41:39 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ft_printf.h"
+
+static void			s_conv(char **result, va_list ap)
+{
+	char	*tmp;
+
+	tmp = *result;
+	*result = ft_strjoin(tmp, va_arg(ap, char *));
+	free(tmp);
+}
 
 static ssize_t		flag_parser(const char *s, char **c)
 {
@@ -29,11 +38,9 @@ static ssize_t		flag_parser(const char *s, char **c)
 
 int					ft_printf(const char *fmt, ...)
 {
-	char		*result, *tmp, *tmp2;
-	char		*conv;
+	char		*result, *tmp, *tmp2, *conv;
+	size_t		i, start;
 	va_list		ap;
-	size_t		i;
-	size_t		start;
 	ssize_t		a;
 
 	va_start(ap, fmt);
@@ -59,18 +66,14 @@ int					ft_printf(const char *fmt, ...)
 			result = ft_strsub(fmt, start, i);
 		i++;
 		if ((a = flag_parser(&fmt[i], &conv)) != -1 && *conv == 's')
-		{
-			tmp = result;
-			result = ft_strjoin(tmp, va_arg(ap, char *));
-			free(tmp);
-		}
+			s_conv(&result, ap);
 		i += a + 1;
 		start = i;
 	}
 	ft_putstr(result);
 	free(result);
-
 	free(conv);
+
 	va_end(ap);
 	return ((int)ft_strlen(result));
 }
