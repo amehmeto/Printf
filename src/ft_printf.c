@@ -6,7 +6,7 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 06:09:18 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/13 20:00:18 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/14 00:36:29 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,13 @@ int					ft_printf(const char *fmt, ...)
 		else
 			result = ft_strsub(fmt, start, i);
 		i++;
-		if ((a = flag_parser(&fmt[i], &conv)) != -1 && *conv == 's')
-			ft_conv_s(&result, ap);
+		if ((a = flag_parser(&fmt[i], &conv)) != -1)
+		{
+			if (*conv == 's')
+				ft_conv_s(&result, ap);
+			else if (*conv == 'p')
+				ft_conv_p(&result, ap);
+		}
 		i += a + 1;
 		start = i;
 	}
