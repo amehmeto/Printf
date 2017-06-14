@@ -6,7 +6,7 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 20:59:50 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/14 02:19:29 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/14 03:08:06 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ static char		*ft_long_to_hex(long n)
 	long	a;
 
 	a = 0;
-	size = 11;
+	size = 0;
+	if (n > 0x800000000)
+		size = 14;
+	else if (n < 0x800000000)
+		size = 11;
 	if (n < 0 || !(rslt = (char *)ft_strnew((size_t)size)))
 		return (NULL);
 	rslt[0] = '0';
