@@ -6,7 +6,7 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 05:44:16 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/14 00:37:10 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/15 02:37:46 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 int		ft_printf(const char *restrict format, ...);
 void	ft_conv_s(char **result, va_list ap);
 void	ft_conv_f(char **result, va_list ap);
+void	ft_conv_d(char **result, va_list ap);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 06:09:18 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/14 02:21:24 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/15 02:55:33 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int					ft_printf(const char *fmt, ...)
 	size_t		i, start;
 	va_list		ap;
 	ssize_t		a;
+	int			ret;
 
 	va_start(ap, fmt);
 
@@ -68,14 +69,17 @@ int					ft_printf(const char *fmt, ...)
 				ft_conv_s(&result, ap);
 			else if (*conv == 'p')
 				ft_conv_p(&result, ap);
+			else if (*conv == 'd')
+				ft_conv_d(&result, ap);
 		}
 		i += a + 1;
 		start = i;
 	}
 	ft_putstr(result);
+	ret = ft_strlen(result);
 	free(result);
 	free(conv);
 
 	va_end(ap);
-	return ((int)ft_strlen(result));
+	return (ret);
 }

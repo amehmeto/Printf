@@ -6,7 +6,7 @@
 #    By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 02:44:46 by amehmeto          #+#    #+#              #
-#    Updated: 2017/06/14 00:37:44 by amehmeto         ###   ########.fr        #
+#    Updated: 2017/06/15 02:39:26 by amehmeto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC_DIR = src/
 FILE = $(SRC_DIR)ft_printf.c \
 		$(SRC_DIR)ft_conv_s.c \
 		$(SRC_DIR)ft_conv_p.c \
+		$(SRC_DIR)ft_conv_d.c \
 
 OBJ = $(FILE:.c=.o)
 CC = gcc
