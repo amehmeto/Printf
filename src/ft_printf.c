@@ -6,7 +6,7 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 06:09:18 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/16 10:11:07 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/16 10:37:56 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,9 @@ static ssize_t		flag_parser(const char *s, char **c)
 	const char	*s_cpy;
 
 	s_cpy = s;
-	if (*s == '%')
-	{
-		**c = *s;
-		return (ssize_t)(s - s_cpy);
-	}
 	while (*s && (FLAGS || MFIELD_AND_PRECISION))
 		s++;
-	if (CONV_F_1 || CONV_F_2 || CONV_F_3)
+	if (*s == '%' || CONV_F_1 || CONV_F_2 || CONV_F_3)
 	{
 		**c = *s;
 		return (ssize_t)(s - s_cpy);
