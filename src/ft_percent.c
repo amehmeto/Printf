@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_d.c                                        :+:      :+:    :+:   */
+/*   ft_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/14 04:35:54 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/16 10:10:47 by amehmeto         ###   ########.fr       */
+/*   Created: 2017/06/16 10:11:41 by amehmeto          #+#    #+#             */
+/*   Updated: 2017/06/16 10:14:30 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ft_printf.h"
 
-void			ft_conv_d(char **result, va_list ap)
+void			ft_percent(char **result, va_list ap)
 {
 	char	*tmp;
-	char	*tmp2;
 
+	(void)ap;
 	tmp = *result;
-	tmp2 = ft_itoa(va_arg(ap, int));
-	*result = ft_strjoin(tmp, tmp2);
+	*result = ft_strjoin(tmp, "%");
 	free(tmp);
-	free(tmp2);
 }

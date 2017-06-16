@@ -6,7 +6,7 @@
 #    By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/16 05:05:10 by amehmeto          #+#    #+#              #
-#    Updated: 2017/06/16 07:45:24 by amehmeto         ###   ########.fr        #
+#    Updated: 2017/06/16 10:12:58 by amehmeto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,10 +87,11 @@ FILE = ft_memset.c \
 	   ft_conv_p.c \
 	   ft_conv_d.c \
 	   ft_conv_o.c \
+	   ft_percent.c \
 
 OBJ = $(addprefix $(OBJ_DIR), $(FILE:.c=.o))
 CC = gcc
-FLAGS = -Weverything -g 
+FLAGS = -Wall -Wextra 
 
 GREEN = \033[32m
 NO_COLOR = \033[0m
