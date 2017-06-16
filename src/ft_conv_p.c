@@ -6,7 +6,7 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 20:59:50 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/14 04:19:41 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/16 07:13:44 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static char		*ft_long_to_hex(long n)
 	while (size-- && *(rslt + size) != 'x')
 	{
 		if ((a = n % 16) < 10)
-			*(rslt + size) = a + '0';
+			*(rslt + size) = (char)a + '0';
 		else
-			*(rslt + size) = a + 'W';
+			*(rslt + size) = (char)a + 'W';
 		n /= 16;
 	}
 	return (rslt);

@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/27 04:31:59 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/01 06:42:12 by amehmeto         ###   ########.fr       */
+/*   Created: 2016/11/30 18:32:27 by amehmeto          #+#    #+#             */
+/*   Updated: 2017/06/16 07:36:48 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char	*ft_itoa(int n)
 {
-	size_t				i;
-	unsigned char		d;
-	unsigned char		*tmp_dst;
-	const unsigned char	*tmp_src;
+	long	m;
+	long	size;
+	char	*rslt;
 
-	i = 0;
-	d = (unsigned char)c;
-	tmp_dst = (unsigned char*)dst;
-	tmp_src = src;
-	while (i < n && tmp_src[i] != d)
+	m = n;
+	size = ft_nbdigits(n) + (m < 0);
+	if (!(rslt = (char *)ft_strnew((size_t)size)))
+		return (NULL);
+	if (m < 0)
 	{
-		tmp_dst[i] = tmp_src[i];
-		i++;
+		*rslt = '-';
+		m *= -1;
 	}
-	if (i != n && d == tmp_src[i])
+	*(rslt + size) = '\0';
+	while (size-- && *(rslt + size) != '-')
 	{
-		tmp_dst[i] = tmp_src[i];
-		return (&dst[i + 1]);
+		*(rslt + size) = m % 10 + '0';
+		m /= 10;
 	}
-	return (NULL);
+	return (rslt);
 }

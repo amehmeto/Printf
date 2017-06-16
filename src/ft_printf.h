@@ -6,14 +6,14 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 05:44:16 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/15 02:37:46 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/16 06:57:46 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../Libft/libft.h"
+# include "./libft.h"
 # include <stdarg.h>
 # include <stdio.h>
 
@@ -25,7 +25,8 @@
 
 int		ft_printf(const char *restrict format, ...);
 void	ft_conv_s(char **result, va_list ap);
-void	ft_conv_f(char **result, va_list ap);
+void	ft_conv_p(char **result, va_list ap);
 void	ft_conv_d(char **result, va_list ap);
+void	ft_conv_o(char **result, va_list ap);
 
 #endif
