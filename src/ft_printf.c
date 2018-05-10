@@ -6,7 +6,7 @@
 /*   By: amehmeto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 06:09:18 by amehmeto          #+#    #+#             */
-/*   Updated: 2017/06/16 10:37:56 by amehmeto         ###   ########.fr       */
+/*   Updated: 2017/06/16 10:54:56 by amehmeto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int					ft_printf(const char *fmt, ...)
 		start = i;
 	}
 	ft_putstr(result);
+	
 	ret = (int)ft_strlen(result);
 	free(result);
 	free(conv);
